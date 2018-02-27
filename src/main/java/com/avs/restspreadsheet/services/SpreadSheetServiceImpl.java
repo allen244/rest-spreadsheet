@@ -18,7 +18,7 @@ public class SpreadSheetServiceImpl implements SpreadSheetService {
     }
 
     @Override
-    public List<Column> getColumns() {
+    public List<String> getColumns() {
         return columsRepository.getColumns();
     }
 }

@@ -10,5 +10,5 @@ import java.util.List;
 @AllArgsConstructor
 public class ColumnsListDTO {
 
-    List<Column> columns;
+    List<String> columns;
 }

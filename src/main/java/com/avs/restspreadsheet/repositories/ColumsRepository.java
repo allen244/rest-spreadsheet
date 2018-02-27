@@ -13,7 +13,7 @@ public class ColumsRepository {
     @Autowired
     ReadSpreadSheetHelper readSpreadSheetHelper;
 
-    public List<Column> getColumns() {
+    public List<String> getColumns() {
         return readSpreadSheetHelper.readColumNames();
     }
 }

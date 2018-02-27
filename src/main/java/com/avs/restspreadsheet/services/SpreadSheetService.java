@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface SpreadSheetService {
 
-    public List<Column> getColumns();
+    public List<String> getColumns();
 }

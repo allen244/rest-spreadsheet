@@ -2,6 +2,7 @@ package com.avs.restspreadsheet.utils;
 
 import com.avs.restspreadsheet.domain.Column;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
@@ -31,8 +32,8 @@ public class ReadSpreadSheetHelper {
 
     }
 
-    public List<Column> readColumNames() {
-        List<Column> columns = new ArrayList<>();
+    public List<String> readColumNames() {
+        Column column = new Column();
         try {
 
             FileInputStream excelFile = new FileInputStream(new File(FILE_NAME));
@@ -52,9 +53,11 @@ public class ReadSpreadSheetHelper {
 
                     if (currentCell.getCellTypeEnum() == CellType.STRING) {
                         System.out.print(currentCell.getStringCellValue() + "--");
-                        Column column = new Column();
-                        column.setColumName(currentCell.getStringCellValue());
-                        columns.add(column);
+
+                        System.out.println(CellReference.convertNumToColString(currentCell.getColumnIndex()));
+
+                        column.addColumn(currentCell.getStringCellValue());
+
                     }
                 }
 
@@ -70,6 +73,6 @@ public class ReadSpreadSheetHelper {
             log.warn(e.getMessage());
         }
 
-        return columns;
+        return column.getColumns();
     }
 }
